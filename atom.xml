@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-10-08T16:31:33.242Z</updated>
+  <updated>2018-10-08T16:38:13.884Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title></title>
+    <link href="http://yoursite.com/2018/10/09/%E5%9B%BE%E7%89%87%E8%87%AA%E9%80%82%E5%BA%94/"/>
+    <id>http://yoursite.com/2018/10/09/图片自适应/</id>
+    <published>2018-10-08T16:38:24.652Z</published>
+    <updated>2018-10-08T16:38:13.884Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><h2 id="图片自适应"><a href="#图片自适应" class="headerlink" title="图片自适应"></a>图片自适应</h2></blockquote><p>在写前端页面的时候我们可能会用到图片自适应的方法，现在就为大家介绍一个关于图片自适应的方法</p><p>它是按照图片的比例去实现的自适应:</p><p>第一步就是为当前的img包裹一个div；</p><p>第二步就是在它的div中设置它的宽度为100%；</p><p>第三步就是给它的div元素设置overflowhideen；</p><p>第四步把它的高度设置为height：0；</p><p>第五部就是给它的padding-top或者bottom设置百分比，</p><p>这个百分比要根据你图片的宽高比去设置，比如你图片的宽度是890，高度是330，那么它的比例就是37.07%；</p><p>这样你的百分比就设置完成了，它主要解决了一些图片在不同的手机端中大小不一样的问题，还能让你图片下面的内容没有抖动感。</p><blockquote><h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4></blockquote><p><img src="https://kingzongyang1996-1257473043.cos.ap-beijing.myqcloud.com/%E7%8E%8B%E6%9E%9E%E9%98%B3Blog%E5%9B%BE%E7%89%87/%E5%9B%BE%E7%89%87%E8%87%AA%E9%80%82%E5%BA%94.jpg" alt=""></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;blockquote&gt;
+&lt;h2 id=&quot;图片自适应&quot;&gt;&lt;a href=&quot;#图片自适应&quot; class=&quot;headerlink&quot; title=&quot;图片自适应&quot;&gt;&lt;/a&gt;图片自适应&lt;/h2&gt;&lt;/blockquote&gt;
+&lt;p&gt;在写前端页面的时候我们可能会用到图片自适应的方法，现在就为大家
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title></title>
