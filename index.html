@@ -152,6 +152,158 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-微信小程序支付开发" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>第一次做微信支付，不做不知道，去网上找资料，通过问同事才写下这篇博客</p>
+<h2 id="关键的文档"><a href="#关键的文档" class="headerlink" title="关键的文档"></a>关键的文档</h2><p>微信小程序开发步骤：<a href="https://pay.weixin.qq.com/wiki/doc/api/wxa/wxa_api.php?chapter=7_3&amp;index=1" rel="noopener" target="_blank">https://pay.weixin.qq.com/wiki/doc/api/wxa/wxa_api.php?chapter=7_3&amp;index=1</a><br></p><br><p>微信小程序API:<a href="https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-pay.html#wxrequestpaymentobject" rel="noopener" target="_blank">https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-pay.html#wxrequestpaymentobject</a></p><br><p>微信小程序业务流程：<a href="https://pay.weixin.qq.com/wiki/doc/api/wxa/wxa_api.php?chapter=7_4&amp;index=2" rel="noopener" target="_blank">https://pay.weixin.qq.com/wiki/doc/api/wxa/wxa_api.php?chapter=7_4&amp;index=2</a><br></p><br><p>微信小程序统一下单：<a href="https://pay.weixin.qq.com/wiki/doc/api/wxa/wxa_api.php?chapter=9_1" rel="noopener" target="_blank">https://pay.weixin.qq.com/wiki/doc/api/wxa/wxa_api.php?chapter=9_1</a><br></p><br><p>微信小程序签名生成算法：<a href="https://pay.weixin.qq.com/wiki/doc/api/wxa/wxa_api.php?chapter=4_3" rel="noopener" target="_blank">https://pay.weixin.qq.com/wiki/doc/api/wxa/wxa_api.php?chapter=4_3</a><br></p><br><p>微信小程序签名校验：&lt;a href=”<a href="https://pay.weixin.qq.com/w程序签名校验：https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=20_1" target="_blank" rel="noopener">https://pay.weixin.qq.com/w程序签名校验：https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=20_1</a> <br></p>
+
+<h2 id="小程序开发步骤"><a href="#小程序开发步骤" class="headerlink" title="小程序开发步骤"></a>小程序开发步骤</h2><p><img src="https://kingzongyang1996-1257473043.cos.ap-beijing.myqcloud.com/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%94%AF%E4%BB%98%E5%BC%80%E5%8F%91/20161230122010273.png" alt=""></p>
+<blockquote>
+<h5 id="wx-login调用接口获取登录凭证（code）"><a href="#wx-login调用接口获取登录凭证（code）" class="headerlink" title="wx.login调用接口获取登录凭证（code）"></a>wx.login调用接口获取登录凭证（code）</h5></blockquote>
+<blockquote>
+<h5 id="code-换取用户的唯一标识（openid）"><a href="#code-换取用户的唯一标识（openid）" class="headerlink" title="code 换取用户的唯一标识（openid）"></a>code 换取用户的唯一标识（openid）</h5></blockquote>
+<p><img src="https://kingzongyang1996-1257473043.cos.ap-beijing.myqcloud.com/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%94%AF%E4%BB%98%E5%BC%80%E5%8F%91/%E8%AF%B7%E6%B1%82%E5%8F%82%E6%95%B0%E5%92%8C%E5%9C%B0%E5%9D%80.png" alt=""></p>
+<blockquote>
+<h5 id="统一下单"><a href="#统一下单" class="headerlink" title="统一下单"></a>统一下单</h5></blockquote>
+<ul>
+<li>URL地址：<a href="https://api.mch.weixin.qq.com/pay/unifiedorder" target="_blank" rel="noopener">https://api.mch.weixin.qq.com/pay/unifiedorder</a></li>
+<li>post</li>
+<li>参数为XML</li>
+</ul>
+<blockquote>
+<h5 id="wx-requestPayment进行支付"><a href="#wx-requestPayment进行支付" class="headerlink" title="wx.requestPayment进行支付"></a>wx.requestPayment进行支付</h5></blockquote>
+<p><img src="https://kingzongyang1996-1257473043.cos.ap-beijing.myqcloud.com/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%94%AF%E4%BB%98%E5%BC%80%E5%8F%91/%E6%94%AF%E4%BB%98.png" alt=""></p>
+<h3 id="采坑："><a href="#采坑：" class="headerlink" title="采坑："></a>采坑：</h3><ol>
+<li>签名MD5加密，网上有些算法是错误的，自己写完还需要在线MD5加密工具进行校验（我采坑一下午，怎么看我写的怎么对，就是出不来，原因就是MD5工具使用错误，坑爹）</li>
+<li>签名规则注意事项（must）<br> ◆ 参数名ASCII码从小到大排序（字典序）；<br> ◆ 如果参数的值为空不参与签名；<br> ◆ 参数名区分大小写；<br> ◆ 验证调用返回或微信主动通知签名时，传送的sign参数不参与签名，将生成的签名与该sign值作校验。<br> ◆ 微信接口可能增加字段，验证签名时必须支持增加的扩展字段</li>
+<li>统一下单签名appid，wx.requestPayment签名appId（大小写必须区分，真是找瞎我钛合金狗眼）</li>
+<li>wx.requestPayment中package参数必须是package:”prepay_id=wx21<strong><strong><strong>**</strong></strong></strong>“，不然，会出现调用支付JSAPI缺少appid/total_fee</li>
+<li>total_fee为分，并且是int</li>
+<li>生成随机数和时间戳一定要保证签名与上传参数一致</li>
+<li>大小写。。一定要注意</li>
+<li>微信小程序trade_type=JSAPI，openid参数必传</li>
+<li>wx.requestPayment生成签名有appId，请求的时候没有appId</li>
+</ol>
+<h4 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h4><pre><code>/* 微信支付 */
+</code></pre><p>  wxpay: function () {<br>    var that = this<br>    //登陆获取code<br>    wx.login({<br>      success: function (res) {<br>        console.log(res.code)<br>        //获取openid<br>        that.getOpenId(res.code)<br>      }<br>    });<br>  },</p>
+<p>  /<em> 获取openId </em>/<br>  getOpenId: function (code) {<br>    var that = this<br>    wx.request({<br>      url: “<a href="https://api.weixin.qq.com/sns/jscode2session?appid=wxbd5a8270399d41d9&amp;secret=d8aac26a5a9c16266d1a23851ebb7d9b&amp;js_code=&quot;" target="_blank" rel="noopener">https://api.weixin.qq.com/sns/jscode2session?appid=wxbd5a8270399d41d9&amp;secret=d8aac26a5a9c16266d1a23851ebb7d9b&amp;js_code=&quot;</a> + code + “&amp;grant_type=authorization_code”,<br>      method: ‘GET’,<br>      success: function (res) {<br>        //统一支付签名<br>        var appid = ‘’;//appid<br>        var body = ‘’;//商户名<br>        var mch_id = ‘’;//商户号<br>        var nonce_str = that.randomString;//随机字符串，不长于32位。<br>        var notify_url = ‘’;//通知地址<br>        var spbill_create_ip = ‘’;//ip<br>        // var total_fee = parseInt(that.data.wxPayMoney) * 100;<br>        var total_fee = 100;<br>        var trade_type = “JSAPI”;<br>        var key = ‘’;<br>        var unifiedPayment = ‘appid=’ + appid + ‘&amp;body=’ + body + ‘&amp;mch_id=’ + mch_id + ‘&amp;nonce_str=’ + nonce_str + ‘¬ify_url=’ + notify_url + ‘&amp;openid=’ + res.data.openid + ‘&amp;out_trade_no=’ + that.data.paySn + ‘&amp;spbill_create_ip=’ + spbill_create_ip + ‘&amp;total_fee=’ + total_fee + ‘&amp;trade_type=’ + trade_type + ‘&amp;key=’ + key<br>        var sign = MD5.MD5(unifiedPayment).toUpperCase()<br>        console.log(sign)</p>
+<pre><code>    //封装统一支付xml参数
+    var formData = &quot;&lt;xml&gt;&quot;
+    formData += &quot;&lt;appid&gt;&quot; + appid + &quot;&lt;/appid&gt;&quot;
+    formData += &quot;&lt;body&gt;&quot; + body + &quot;&lt;/body&gt;&quot;
+    formData += &quot;&lt;mch_id&gt;&quot; + mch_id + &quot;&lt;/mch_id&gt;&quot;
+    formData += &quot;&lt;nonce_str&gt;&quot; + nonce_str + &quot;&lt;/nonce_str&gt;&quot;
+    formData += &quot;&lt;notify_url&gt;&quot; + notify_url + &quot;&lt;/notify_url&gt;&quot;
+    formData += &quot;&lt;openid&gt;&quot; + res.data.openid + &quot;&lt;/openid&gt;&quot;
+    formData += &quot;&lt;out_trade_no&gt;&quot; + that.data.paySn + &quot;&lt;/out_trade_no&gt;&quot;
+    formData += &quot;&lt;spbill_create_ip&gt;&quot; + spbill_create_ip + &quot;&lt;/spbill_create_ip&gt;&quot;
+    formData += &quot;&lt;total_fee&gt;&quot; + total_fee + &quot;&lt;/total_fee&gt;&quot;
+    formData += &quot;&lt;trade_type&gt;&quot; + trade_type + &quot;&lt;/trade_type&gt;&quot;
+    formData += &quot;&lt;sign&gt;&quot; + sign + &quot;&lt;/sign&gt;&quot;
+    formData += &quot;&lt;/xml&gt;&quot;
+
+    //统一支付
+    wx.request({
+      url: &apos;https://api.mch.weixin.qq.com/pay/unifiedorder&apos;,
+      method: &apos;POST&apos;,
+      head: &apos;application/x-www-form-urlencoded&apos;,
+      data: formData, // 设置请求的 header
+      success: function (res) {
+        console.log(res.data)
+
+        var result_code = that.getXMLNodeValue(&apos;result_code&apos;, res.data.toString(&quot;utf-8&quot;))
+        var resultCode = result_code.split(&apos;[&apos;)[2].split(&apos;]&apos;)[0]
+        if (resultCode == &apos;FAIL&apos;) {
+          var err_code_des = that.getXMLNodeValue(&apos;err_code_des&apos;, res.data.toString(&quot;utf-8&quot;))
+          var errDes = err_code_des.split(&apos;[&apos;)[2].split(&apos;]&apos;)[0]
+          wx.navigateBack({
+            delta: 1, // 回退前 delta(默认为1) 页面
+            success: function (res) {
+              wx.showToast({
+                title: errDes,
+                icon: &apos;success&apos;,
+                duration: 2000
+              })
+            },
+
+          })
+        } else {
+          //发起支付
+          var prepay_id = that.getXMLNodeValue(&apos;prepay_id&apos;, res.data.toString(&quot;utf-8&quot;))
+          var tmp = prepay_id.split(&apos;[&apos;)
+          var tmp1 = tmp[2].split(&apos;]&apos;)
+          //签名  
+          var key = &apos;&apos;;
+          var appId = &apos;&apos;;
+          var timeStamp = that.createTimeStamp();
+          var nonceStr = that.randomString();
+          var stringSignTemp = &quot;appId=&amp;nonceStr=&quot; + nonceStr + &quot;&amp;package=prepay_id=&quot; + tmp1[0] + &quot;&amp;signType=MD5&amp;timeStamp=&quot; + timeStamp + &quot;&amp;key=&quot;
+          var sign = MD5.MD5(stringSignTemp).toUpperCase()
+          console.log(sign)
+          var param = { &quot;timeStamp&quot;: timeStamp, &quot;package&quot;: &apos;prepay_id=&apos; + tmp1[0], &quot;paySign&quot;: sign, &quot;signType&quot;: &quot;MD5&quot;, &quot;nonceStr&quot;: nonceStr }
+          that.pay(param)
+        }
+
+
+
+      },
+
+    })
+  },
+  fail: function () {
+    // fail
+  },
+  complete: function () {
+    // complete
+  }
+})
+</code></pre><p>  },<br>  /<em> 随机数 </em>/<br>  randomString: function () {<br>    var chars = ‘ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678’;    /<strong><strong>默认去掉了容易混淆的字符oOLl,9gq,Vv,Uu,I1</strong></strong>/<br>    var maxPos = chars.length;<br>    var pwd = ‘’;<br>    for (var i = 0; i &lt; 32; i++) {<br>      pwd += chars.charAt(Math.floor(Math.random() <em> maxPos));<br>    }<br>    return pwd;<br>  },<br>  /</em> 获取prepay_id */<br>  getXMLNodeValue: function (node_name, xml) {<br>    var tmp = xml.split(“&lt;” + node_name + “&gt;”)<br>    var _tmp = tmp[1].split(“&lt;/“ + node_name + “&gt;”)<br>    return _tmp[0]<br>  },</p>
+<p>  /<em> 时间戳产生函数   </em>/<br>  createTimeStamp: function () {<br>    return parseInt(new Date().getTime() / 1000) + ‘’<br>  },<br>  /<em> 支付   </em>/<br>  pay: function (param) {<br>    wx.requestPayment({<br>      timeStamp: param.timeStamp,<br>      nonceStr: param.nonceStr,<br>      package: param.package,<br>      signType: param.signType,<br>      paySign: param.paySign,<br>      success: function (res) {<br>        // success<br>        console.log(res)<br>        wx.navigateBack({<br>          delta: 1, // 回退前 delta(默认为1) 页面<br>          success: function (res) {<br>            wx.showToast({<br>              title: ‘支付成功’,<br>              icon: ‘success’,<br>              duration: 2000<br>            })<br>          },<br>          fail: function () {<br>            // fail<br>          },<br>          complete: function () {<br>            // complete<br>          }<br>        })<br>      },<br>      fail: function () {<br>        // fail<br>        console.log(“支付失败”)<br>      },<br>      complete: function () {<br>        // complete<br>        console.log(“pay complete”)<br>      }<br>    })<br>  }</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/10/09/微信小程序支付开发/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-hexo+githubpages" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
