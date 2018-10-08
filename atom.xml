@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-10-08T16:16:01.893Z</updated>
+  <updated>2018-10-08T16:31:33.242Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title></title>
+    <link href="http://yoursite.com/2018/10/09/%E6%89%8B%E6%9C%BA%E7%AB%AF1%E5%83%8F%E7%B4%A0%E8%BE%B9%E6%A1%86/"/>
+    <id>http://yoursite.com/2018/10/09/手机端1像素边框/</id>
+    <published>2018-10-08T16:31:50.042Z</published>
+    <updated>2018-10-08T16:31:33.242Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><h2 id="手机端1像素的边框问题解决方案"><a href="#手机端1像素的边框问题解决方案" class="headerlink" title="手机端1像素的边框问题解决方案"></a>手机端1像素的边框问题解决方案</h2></blockquote><p></p><p>在我们去做手机端的时候，会在手机端中出现当你去使用boreder-top或者left、right，bottom，的使用在一些浏览器中会出现1像素的问题，因为我们的css是像素，而手机屏幕是物理像素，它们的关系是1:2的关系，所以就会到时你看的时候会多出了一个像素，为了样式的严谨性，所以需要引入一个css的样式去解决这个问题。</p><p></p><p></p><p>border.css 文件 ，我们只要引入这个文件就可以快速的解决这个问题，可能有很多同学都有不会注意到这个东西，但是如果看到这篇文章的话，希望可以让你们注意到，这种严谨的作风，可能会让你在工作中如鱼得水。</p><p></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;blockquote&gt;
+&lt;h2 id=&quot;手机端1像素的边框问题解决方案&quot;&gt;&lt;a href=&quot;#手机端1像素的边框问题解决方案&quot; class=&quot;headerlink&quot; title=&quot;手机端1像素的边框问题解决方案&quot;&gt;&lt;/a&gt;手机端1像素的边框问题解决方案&lt;/h2&gt;&lt;/blockq
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title></title>
@@ -53,27 +75,6 @@
       
         &lt;h4 id=&quot;HEXO-GITHUB-博客搭建&quot;&gt;&lt;a href=&quot;#HEXO-GITHUB-博客搭建&quot; class=&quot;headerlink&quot; title=&quot;HEXO+GITHUB 博客搭建&quot;&gt;&lt;/a&gt;HEXO+GITHUB 博客搭建&lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;&lt;p&gt;安装Nod
-      
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="http://yoursite.com/2018/08/16/hello-world/"/>
-    <id>http://yoursite.com/2018/08/16/hello-world/</id>
-    <published>2018-08-16T12:57:16.045Z</published>
-    <updated>2018-08-16T12:57:16.045Z</updated>
-    
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
       
     
     </summary>
